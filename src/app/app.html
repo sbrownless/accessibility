@@ -1,8 +1,6 @@
-<div style="height: 400px; width: 100%;">
-  <ag-grid-angular
-    style="height: 100%; width: 100%; display: block;"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    [theme]="theme">
-  </ag-grid-angular>
-</div>
+<nav>
+  <a routerLink="/broken">Broken</a> |
+  <a routerLink="/fixed">Fixed</a>
+</nav>
+
+<router-outlet></router-outlet>

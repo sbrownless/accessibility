@@ -1,0 +1,16 @@
+.ag-theme-alpine {
+  overflow-x: auto;
+}
+
+.ag-cell {
+  overflow-wrap: break-word;
+}
+
+.ag-cell:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: -2px;
+}
+
+:host {
+  min-width: 0;
+}

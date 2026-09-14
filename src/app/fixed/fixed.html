@@ -1,0 +1,11 @@
+<h2>Fixed AG Grid (WCAG-compliant at 400%)</h2>
+
+<div style="height: 400px; width: 100%;">
+  <ag-grid-angular
+    style="height: 100%; width: 100%; display: block;"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [theme]="theme"
+    (cellFocused)="onCellFocused($event)">
+  </ag-grid-angular>
+</div>
