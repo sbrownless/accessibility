@@ -1,11 +1,28 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { AgGridAngular } from 'ag-grid-angular';
+import { AllCommunityModule, ColDef, ModuleRegistry, themeQuartz } from 'ag-grid-community';
+
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [AgGridAngular],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
-export class App {
-  protected readonly title = signal('aggrid-400-demo');
+export class AppComponent {
+
+  theme = themeQuartz;
+
+  columnDefs: ColDef[] = [
+    { field: 'id', width: 150 },
+    { field: 'name', width: 300 },
+    { field: 'email', width: 400 }
+  ];
+
+  rowData = [
+    { id: 1, name: 'Alice', email: 'alice@example.com' },
+    { id: 2, name: 'Bob', email: 'bob@example.com' }
+  ];
 }
