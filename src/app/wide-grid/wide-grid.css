@@ -1,0 +1,11 @@
+/* Grid scroll region keyboard-focusable so users can Tab in without a mouse */
+.grid-wrapper {
+  overflow-x: auto;
+}
+
+/* Focus visibility (WCAG 2.4.7): outline must not be clipped by cell/row overflow */
+::ng-deep .ag-cell:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: -2px;
+  z-index: 1;
+}

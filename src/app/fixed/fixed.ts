@@ -12,12 +12,23 @@ import { ColDef, CellFocusedEvent, themeQuartz } from 'ag-grid-community';
 export class Fixed {
   theme = themeQuartz;
 
+  // No minWidth large enough to force horizontal scroll at 320px (WCAG 1.4.10 reflow)
+  defaultColDef: ColDef = {
+    flex: 1,
+    minWidth: 60,
+    wrapText: true,
+    autoHeight: true,
+    wrapHeaderText: true,
+    autoHeaderHeight: true,
+    resizable: true,
+  };
+
   columnDefs: ColDef[] = [
-    { field: 'id', minWidth: 80, flex: 1 },
-    { field: 'name', minWidth: 120, flex: 1 },
-    { field: 'email', minWidth: 150, flex: 1 },
-    { field: 'address', minWidth: 150, flex: 1 },
-    { field: 'notes', minWidth: 150, flex: 1 },
+    { field: 'id' },
+    { field: 'name' },
+    { field: 'email' },
+    { field: 'address' },
+    { field: 'notes', flex: 2 },
   ];
 
   rowData = [

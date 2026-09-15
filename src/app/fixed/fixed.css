@@ -1,16 +1,31 @@
-.ag-theme-alpine {
+/* Reflow (WCAG 1.4.10): grid no longer relies on horizontal scroll, this is just a safety net */
+.grid-wrapper {
   overflow-x: auto;
+  max-width: 100%;
 }
 
-.ag-cell {
-  overflow-wrap: break-word;
+/* Make text wrap instead of ellipses (AG Grid cells are created outside Angular's template, so pierce encapsulation) */
+::ng-deep .ag-cell {
+  white-space: normal !important;
+  line-height: 1.2 !important;
+  overflow-wrap: break-word !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
 }
 
-.ag-cell:focus {
+/* Focus visibility (WCAG 2.4.7): outline must not be clipped by cell/row overflow */
+::ng-deep .ag-cell:focus,
+::ng-deep .ag-row:has(.ag-cell:focus) {
+  overflow: visible !important;
+}
+
+::ng-deep .ag-cell:focus {
   outline: 3px solid #005fcc;
   outline-offset: -2px;
+  z-index: 1;
 }
 
+/* Critical for flexbox parents */
 :host {
   min-width: 0;
 }

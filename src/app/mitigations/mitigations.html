@@ -1,0 +1,113 @@
+<main class="page-shell">
+  <header class="page-header">
+    <p class="eyebrow">Accessibility patterns</p>
+    <h1>400% Zoom Mitigations</h1>
+    <p>
+      Four focused examples for keeping grid content visible, operable, and readable at high zoom.
+    </p>
+  </header>
+
+  <section class="demo-section" aria-labelledby="wrapping-title">
+    <div class="section-heading">
+      <div>
+        <p class="step-label">01</p>
+        <h2 id="wrapping-title">Text wrapping</h2>
+      </div>
+      <p>Long cell content wraps onto additional lines instead of disappearing behind an ellipsis.</p>
+    </div>
+    <div class="grid-frame wrap-grid" role="region" aria-label="Text wrapping example">
+      <ag-grid-angular
+        style="height: 250px; width: 100%; display: block;"
+        [rowData]="rowData"
+        [columnDefs]="wrapColumnDefs"
+        [defaultColDef]="wrapDefaultColDef"
+        [theme]="theme">
+      </ag-grid-angular>
+    </div>
+  </section>
+
+  <section class="demo-section" aria-labelledby="scroll-title">
+    <div class="section-heading">
+      <div>
+        <p class="step-label">02</p>
+        <h2 id="scroll-title">Keyboard auto-scroll</h2>
+      </div>
+      <p>Use Tab or the arrow keys. The focused cell is brought into view automatically.</p>
+    </div>
+    <div class="grid-frame horizontal-grid" role="region" aria-label="Keyboard auto-scroll example">
+      <ag-grid-angular
+        style="height: 250px; width: 100%; min-width: 900px; display: block;"
+        [rowData]="rowData"
+        [columnDefs]="scrollColumnDefs"
+        [defaultColDef]="defaultColDef"
+        [theme]="theme"
+        (cellFocused)="onCellFocused($event)">
+      </ag-grid-angular>
+    </div>
+  </section>
+
+  <section class="demo-section" aria-labelledby="focus-title">
+    <div class="section-heading">
+      <div>
+        <p class="step-label">03</p>
+        <h2 id="focus-title">Strong focus</h2>
+      </div>
+      <p>The active cell has a high-contrast outline that remains visible during keyboard navigation.</p>
+    </div>
+    <div class="grid-frame focus-grid" role="region" aria-label="Strong focus example">
+      <ag-grid-angular
+        style="height: 250px; width: 100%; display: block;"
+        [rowData]="rowData"
+        [columnDefs]="focusColumnDefs"
+        [defaultColDef]="defaultColDef"
+        [theme]="theme">
+      </ag-grid-angular>
+    </div>
+  </section>
+
+  <section class="demo-section detail-section" aria-labelledby="detail-title">
+    <div class="section-heading">
+      <div>
+        <p class="step-label">04</p>
+        <h2 id="detail-title">Detail panel</h2>
+      </div>
+      <p>Select a row to reveal its complete notes in a persistent, keyboard-reachable panel.</p>
+    </div>
+    <div class="grid-frame" role="region" aria-label="Detail panel example">
+      <ag-grid-angular
+        style="height: 250px; width: 100%; display: block;"
+        [rowData]="rowData"
+        [columnDefs]="detailColumnDefs"
+        [defaultColDef]="defaultColDef"
+        [theme]="theme"
+        (rowClicked)="onRowClicked($event)">
+      </ag-grid-angular>
+    </div>
+
+    @if (selectedRow) {
+      <aside class="detail-panel" aria-labelledby="selected-row-title">
+        <div class="detail-panel-header">
+          <div>
+            <p class="step-label">Selected record</p>
+            <h3 id="selected-row-title">{{ selectedRow.name }}</h3>
+          </div>
+          <button type="button" (click)="clearDetails()">Close details</button>
+        </div>
+        <dl>
+          <div>
+            <dt>Email</dt>
+            <dd>{{ selectedRow.email }}</dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>{{ selectedRow.address }}</dd>
+          </div>
+          <div>
+            <dt>Full notes</dt>
+            <dd>{{ selectedRow.notes }}</dd>
+          </div>
+        </dl>
+      </aside>
+    }
+  </section>
+</main>

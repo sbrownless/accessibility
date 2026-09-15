@@ -1,0 +1,16 @@
+<h2>Wide Grid (30+ columns, horizontal scroll is WCAG 1.4.10 exempt for data grids)</h2>
+
+<div
+  class="grid-wrapper"
+  role="region"
+  aria-label="Employee data grid, 30 columns, scroll horizontally to see more"
+  style="width: 100%;">
+  <ag-grid-angular
+    style="height: 400px; width: 100%; display: block;"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [theme]="theme"
+    (cellFocused)="onCellFocused($event)">
+  </ag-grid-angular>
+</div>
