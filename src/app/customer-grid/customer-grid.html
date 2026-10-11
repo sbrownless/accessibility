@@ -1,0 +1,27 @@
+<h2>Customer Grid</h2>
+
+<label class="pin-toggle">
+  <input
+    type="checkbox"
+    role="switch"
+    [checked]="pinned"
+    [disabled]="zoomed"
+    (change)="togglePin($any($event.target).checked)" />
+  Pin Customer Name column
+</label>
+
+<div class="grid-wrapper" role="region" aria-label="Customer data grid, scroll horizontally to see more columns">
+  <ag-grid-angular
+    style="height: 700px; width: 100%; display: block;"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [theme]="theme"
+    [suppressColumnVirtualisation]="true"
+    (firstDataRendered)="applySizing()"
+    [pagination]="true"
+    [paginationPageSize]="pageSize"
+    [paginationPageSizeSelector]="pageSizeOptions"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>

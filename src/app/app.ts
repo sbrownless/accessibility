@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
-ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-root',

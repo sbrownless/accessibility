@@ -1,0 +1,74 @@
+.pin-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+.pin-toggle input[role='switch'] {
+  appearance: none;
+  position: relative;
+  width: 2.5rem;
+  height: 1.4rem;
+  margin: 0;
+  border-radius: 1rem;
+  background: #767676;
+  cursor: pointer;
+}
+
+.pin-toggle input[role='switch']::after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.15s;
+}
+
+.pin-toggle input[role='switch']:checked {
+  background: #0b5cad;
+}
+
+.pin-toggle input[role='switch']:checked::after {
+  transform: translateX(1.1rem);
+}
+
+.pin-toggle input[role='switch']:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+/* Left-align the pager and let it wrap onto extra lines at high zoom */
+:host ::ng-deep .ag-paging-panel {
+  height: auto;
+  min-height: 48px;
+  overflow: visible;
+}
+
+:host ::ng-deep .ag-paging-panel-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-block: 8px;
+  row-gap: 8px;
+}
+
+/* Thicker deep-blue keyboard focus indicator on cells and headers */
+:host ::ng-deep .ag-cell-focus:not(.ag-cell-range-selected),
+:host ::ng-deep .ag-header-cell:focus-visible {
+  outline: 3px solid #0a2f8f;
+  outline-offset: -3px;
+}
+
+/* The dropdown renders on the page body, outside :host, so these rules cannot use :host */
+::ng-deep .ag-list-item.ag-active-item,
+::ng-deep .ag-list-item:hover {
+  background-color: #0a2f8f;
+  color: #fff;
+}

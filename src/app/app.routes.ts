@@ -1,13 +1,25 @@
 import { Routes } from '@angular/router';
-import { Broken } from './broken/broken';
-import { Fixed } from './fixed/fixed';
-import { Mitigations } from './mitigations/mitigations';
-import { WideGrid } from './wide-grid/wide-grid';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'broken', pathMatch: 'full' },
-  { path: 'broken', component: Broken },
-  { path: 'fixed', component: Fixed },
-  { path: 'wide-grid', component: WideGrid },
-  { path: 'mitigations', component: Mitigations }
+  {
+    path: 'broken',
+    loadComponent: () => import('./broken/broken').then((module) => module.Broken),
+  },
+  {
+    path: 'fixed',
+    loadComponent: () => import('./fixed/fixed').then((module) => module.Fixed),
+  },
+  {
+    path: 'wide-grid',
+    loadComponent: () => import('./wide-grid/wide-grid').then((module) => module.WideGrid),
+  },
+  {
+    path: 'customer-grid',
+    loadComponent: () => import('./customer-grid/customer-grid').then((module) => module.CustomerGrid),
+  },
+  {
+    path: 'mitigations',
+    loadComponent: () => import('./mitigations/mitigations').then((module) => module.Mitigations),
+  },
 ];

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import '../grid-registration';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, themeQuartz } from 'ag-grid-community';
 
